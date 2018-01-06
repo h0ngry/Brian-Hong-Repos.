@@ -1,0 +1,26 @@
+This game is going to be a very simple turn-based game in which the player 
+chooses their type of fighter that they want to fight with. This includes a 
+Warrior, Archer, or Mage classes. The whole point of the game is to 
+engage various enemies in a row. Since, I am starting with simple concepts
+, the game is going to look like this:
+
+
+"Which class do you want to be? Press 1 to be a Warrior. Press 2 to be an Archer. Press 3 to be a mage."
+1
+
+You encounter an enemy is it is of the ranged class. You engage.
+
+A dice is rolled to see who attacks first. You roll a 6. The enemy rolls a 8.
+
+Eight is higher, so the enemy attacks first.
+
+The enemy deals 2 damage, you have (x) health left.
+
+.....
+
+The two sides lock into combat until one side runs out of hitpoints.
+
+The player needs to stay alive as long as possible by winning the chains
+of encounters and kept as score (one point for winning each encounter).
+
+The damage dealt will be a random number within a range.
