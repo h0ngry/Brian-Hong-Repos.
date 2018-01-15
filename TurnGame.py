@@ -20,20 +20,20 @@ class enemy:
     #attack method
     def attack(self,player):
         dmg_multiplier = 2
-        self.hit = random.randint(1,3)
+        self.dmg = random.randint(1,3)
 
         if self.type == 'warrior' and player.type == 'archer':
-            self.hit = self.hit * dmg_multiplier
+            self.dmg = self.dmg * dmg_multiplier
 
         if self.type == 'archer' and player.type == 'mage':
-            self.hit = self.hit * dmg_multiplier
+            self.dmg = self.dmg * dmg_multiplier
 
         if self.type == 'mage' and player.type == 'warrior':
-            self.hit = self.hit * dmg_multiplier
+            self.dmg = self.dmg * dmg_multiplier
 
 
 
-        player.hp -= self.hit
+        player.hp -= self.dmg
 
     #block method
     #blocks the player attack based on chance
@@ -84,16 +84,17 @@ class player:
 
     #attack method
     def attack(self,enemy):
-        self.hit = random.randint(4,5)
+        dmg_multiplier = 2
+        self.dmg = random.randint(4,5)
         if self.type == 'warrior' and enemy.type == 'archer':
-            self.hit = self.hit * dmg_multiplier
+            self.dmg = self.dmg * dmg_multiplier
 
         if self.type == 'archer' and enemy.type == 'mage':
-            self.hit = self.hit * dmg_multiplier
+            self.dmg = self.dmg * dmg_multiplier
 
         if self.type == 'mage' and enemy.type == 'warrior':
-            self.hit = self.hit * dmg_multiplier
-        enemy.enem_hp -= self.hit
+            self.dmg = self.dmg * dmg_multiplier
+        enemy.enem_hp -= self.dmg
 
     #block method
     #blocks the enemy attack based on chance
@@ -140,14 +141,14 @@ def main():
             print("")
             player_one.attack(foe)
             if foe.block():
-                foe.enem_hp += player_one.hit
+                foe.enem_hp += player_one.dmg
                 print("Enemy has blocked your attack")
                 print("The enemy has", foe.enem_hp, "health left")
             else:
                 if foe.isDead():
                     foe.enem_hp = 0
                     player_one.score += 1
-                    print("You deal", player_one.hit, "points of damage")
+                    print("You deal", player_one.dmg, "points of damage")
                     print("The enemy has", foe.enem_hp, "health left")
                     print("The enemy is dead")
                     print("")
@@ -155,7 +156,7 @@ def main():
                     while resp !=1:
                         resp = eval(input("Press 1 to continue "))
                 else:
-                    print("You deal", player_one.hit, "points of damage")
+                    print("You deal", player_one.dmg, "points of damage")
                     print("The enemy has", foe.enem_hp, "health left")
 
             print("")
@@ -163,13 +164,13 @@ def main():
                 foe.attack(player_one)
                 print("The enemy attacks")
                 if player_one.block():
-                    player_one.hp += foe.hit
+                    player_one.hp += foe.dmg
                     print("You blocked the enemy's attack")
                     print("You have", player_one.hp, "health left")
                 else:
                     if player_one.hp <=0:
                         player_one.hp = 0
-                        print("The enemy deals", foe.hit, "points of damage")
+                        print("The enemy deals", foe.dmg, "points of damage")
                         print("You have", player_one.hp, "health left")
                         print("You are dead")
                         print("GAME OVER")
@@ -177,7 +178,7 @@ def main():
                         print("Your final score is:", player_one.score)
                         exit()
                     else:
-                        print("The enemy deals", foe.hit,"points of damage")
+                        print("The enemy deals", foe.dmg,"points of damage")
                         print("You have",player_one.hp,"health left")
 
 
